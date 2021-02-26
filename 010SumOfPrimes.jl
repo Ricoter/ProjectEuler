@@ -21,6 +21,6 @@ function primesbelow(n)
     return primes
 end
 
-n = 2e5
+n = 2e6
 
 @time sum(primesbelow(n))

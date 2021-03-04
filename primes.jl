@@ -17,4 +17,24 @@ function primes(N)
     return primes
 end
 
-include("010SumOfPrimes.jl")
+# In combination with primes it returns all proper divisors of N
+properDivisors(primes) = unique(collect(combinations(primes)))
+
+# include("010SumOfPrimes.jl") # isprime(); primebelow()
+function isprime(i, primes)
+    for p in primes
+        √i < p && break
+        i%p==0 && return false
+    end
+    return true
+end
+
+function primesbelow(n)
+    primes = [2]
+    i = 3
+    while i < n
+        isprime(i, primes) && append!(primes, i)
+        i += 2
+    end
+    return primes
+end

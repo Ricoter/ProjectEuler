@@ -10,7 +10,8 @@ For example, when the list is sorted into alphabetical order, COLIN, which is wo
 What is the total of all the name scores in the file?
 =#
 
-nameScore(name::String) = sum(collect(name) - 'A' + 1)
+nameScore(name::SubString) = sum(collect(name) .- 'A' .+ 1)
+
 function a()
     x = readlines("input/022Names.txt")[1]
     x = split(x, ",")

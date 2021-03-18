@@ -20,4 +20,5 @@ end
 
 
 z(n,f=2) = n==1 ? f : (n%f==0 ? z(n÷f,f) : z(n,f+1))
-z(600851475143), largestPrime(600851475143)
+@time z(600851475143)
+@time largestPrime(600851475143)

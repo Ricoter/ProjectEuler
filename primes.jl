@@ -1,4 +1,4 @@
-function primes(N)
+function primeFactors(N)
     """Returns a list of the prime factors of N"""
     primes = []
     while N%2==0

@@ -2,14 +2,14 @@ function primeFactors(N)
     """Returns a list of the prime factors of N"""
     primes = []
     while N%2==0
-        append!(primes,2)
+        push(primes,2)
         N ÷= 2
     end
     
     f = 3
     while N > 1
         while N%f==0
-            append!(primes,f)
+            push(primes,f)
             N ÷= f
         end
         f += 2
@@ -30,10 +30,10 @@ function isprime(i, primes)
 end
 
 function primesbelow(n)
-    primes = [2]
+    primes = Set(2)
     i = 3
     while i < n
-        isprime(i, primes) && append!(primes, i)
+        isprime(i, primes) && push!(primes, i)
         i += 2
     end
     return primes

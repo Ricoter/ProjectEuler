@@ -8,18 +8,22 @@ For example, the word value for SKY is 19 + 11 + 25 = 55 = t10. If the word valu
 
 Using words.txt (right click and 'Save Link/Target As...'), a 16K text file containing nearly two-thousand common English words, how many are triangle words?
 =#
+using BenchmarkTools
 
-t(n) = n/2*(n+1)
-first100 = t.(1:100)
+t(n) = n/2*(n+1)     # Triangle fn
+first100 = t.(1:100) # get first 100
 
-istriangle(n) = n ∈ first100
-wordValue(word) = sum(collect(word) .- 'A' .+ 1)
+istriangle(n) = n ∈ first100                     # Check if wordValue in first 100
+wordValue(word) = sum(collect(word) .- 'A' .+ 1) # Get word value
 
-function p()
+function p042()
+    # Open words in array
     x = readlines("input/042Words.txt")[1]
     x = split(x, ",")
-    x = strip.(x, '\"')
+    x = strip.(x, '"')
+
+    # Solve problem vectorized
     x = wordValue.(x)
     sum(istriangle.(x))
 end
-@time p() #0.001s
+@benchmark p042() # 0.001s

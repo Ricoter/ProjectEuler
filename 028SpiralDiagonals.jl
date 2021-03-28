@@ -6,4 +6,4 @@ for dx=2:2:1000, _ = 1:4
     x += dx
     diagNums += x
 end
-diagNum
+diagNum 

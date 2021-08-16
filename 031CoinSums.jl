@@ -22,4 +22,4 @@ function coinRecursion(total=200, i=1)
     
     combinations
 end
-@time coinRecursion(200)
+@time coinRecursion(2000)

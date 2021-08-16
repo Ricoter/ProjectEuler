@@ -29,14 +29,16 @@ end
 sum(nums)
 
 hi = 1064
-Tm = copy(T) 
+
+Tm = copy(T)    
 for i=size(T)[1]:-1:2
     # Tm[i-1,:] += v1* max(T[i,:], circshift(T[i,:],-1))
-    Tm[i-1,:] += max(Tm[i,:], circshift(Tm[i,:],-1))
+    Tm[i-1,:] += max.(Tm[i,:], circshift(Tm[i,:],-1))
     # reverse 
 
     Tm[T .== 0] .= 0
 end
+Tm[1,1]
     # Tm *= T/100
 
 # nums2 = []

@@ -11,6 +11,7 @@ function OddPeriod(N)   # Keep it Rational
     ---> a = (floor(√N) + _b) ÷ c
     ---> b = _b - a*c
     """
+    println(N)
     isinteger(√N) && return 0
     n = floor(Int, √N) # These calculations don't need decimal points
     a = n
@@ -18,15 +19,15 @@ function OddPeriod(N)   # Keep it Rational
     c = 1
     for period = 1:100000
         b = -b - a*c
-        c = (N - b^2)/c  #(√N - a[end])(√N + a[end])
+        c = (N - b^2)/c  #(√N - a[end])(√N + a[end])/c_old
         a = (n - b) ÷ c
-
+        println("$a $b $c")
         b == -n && c == 1 && return period%2
     end
 end
 
-@benchmark sum(OddPeriod.(1:10000))
-
+# @benchmark sum(OddPeriod.(1:10000))
+OddPeriod.(1:14)
 
 
 

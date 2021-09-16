@@ -1,15 +1,13 @@
 using Primes
 
-N = Int(5e7) - 1
+function solve(N)
+    # Generate Primes
+    primesA = primes(floor(Int, N ^ (1/2))) #.^ 2
+    primesB = primes(floor(Int, N ^ (1/3))) #.^ 3
+    primesC = primes(floor(Int, N ^ (1/4))) #.^ 4
 
-primesA = reverse(primes(floor(Int, N ^ 1/2)))
-primesB = reverse(primes(floor(Int, N ^ 1/3)))
-primesC = reverse(primes(floor(Int, (N - 2^2 - 2^3) ^ 1/4)))
-
-for c in primesC
-    residual = N - c^4
-    residual <= 0 && continue
-    for b in primesB
-
-    end
+    nums = [a^2 + b^3 + c^4  for a ∈ primesA, b ∈ primesB, c ∈ primesC]
+    return length(unique(nums[nums .<= N]))
 end
+
+@time solve(5e7)

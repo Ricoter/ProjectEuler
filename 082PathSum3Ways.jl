@@ -48,9 +48,9 @@ function ShortestPath(M)
             # add tentative distance for new position
             M[position...] += M[current...]
 
-            # return minimum when last column is filled
-            counter -= (position[2]==N) # if true subtract 1
-            counter==0 && return minimum(M[:,N])
+            ## RETURN: minimum when last column is filled ##
+            counter -= (position[2] == N) # if true subtract 1
+            counter == 0 && return minimum(M[:,N])
 
             # add new position to "ready"-list
             push!(source, position)
@@ -58,7 +58,6 @@ function ShortestPath(M)
 
         # add current to used/visited grid positions
         push!(used, current)
-
     end
 end
 

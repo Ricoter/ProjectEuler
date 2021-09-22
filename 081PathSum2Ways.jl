@@ -1,4 +1,4 @@
-using Plots: push!
+using Plots
 # txt to Matrix{Int64}
 M = readlines("input/081matrix.txt")
 M = split.(M, ",")
